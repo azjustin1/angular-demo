@@ -1,0 +1,28 @@
+<h1>Dashboard</h1>
+<label for="name">Name</label>
+<input class="form-control" id="name" type="text" [formControl]="newName" />
+<label for="price">Price:</label>
+<input id="price" type="text" [formControl]="newPrice" />
+<label for="description"> Description </label>
+<input type="text" [formControl]="newDescription" />
+<div>
+  <button (click)="addNew()">Add</button>
+</div>
+
+<form action="" class="form" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+  <label for="">Email</label>
+  <input type="text" [(ngModel)]="username" />
+  <span *ngIf="email?.invalid">Require</span>
+  <label for="">Password</label>
+  <input class="form-control" type="password" formControlName="password" />
+  <input type="submit" value="Login" />
+</form>
+<div *ngIf="products">
+  <app-cart-item
+    *ngFor="let product of products"
+    [id]="product.id"
+    [name]="product.name"
+    [price]="product.price"
+  >
+  </app-cart-item>
+</div>

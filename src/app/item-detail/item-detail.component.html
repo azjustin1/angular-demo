@@ -1,0 +1,59 @@
+<div *ngIf="product">
+  <div *ngIf="!isEdit">
+    <div>
+      {{ product.name }}
+    </div>
+    <div>
+      {{ product.price }}
+    </div>
+    <div>
+      {{ product.description }}
+    </div>
+    <button (click)="back()">Back</button>
+    <button (click)="toggleEdit()">Edit</button>
+    <button (click)="delete()">Delete</button>
+  </div>
+
+  <form *ngIf="isEdit" (ngSubmit)="onSubmit()">
+    <div>
+      <div>
+        <label for="name">Name</label>
+      </div>
+      <div>
+        <input
+          type="text"
+          [(ngModel)]="product.name"
+          [ngModelOptions]="{ standalone: true }"
+        />
+      </div>
+    </div>
+    <div>
+      <div>
+        <label for="price">Price</label>
+      </div>
+      <div>
+        <input
+          type="number"
+          [(ngModel)]="product.price"
+          [ngModelOptions]="{ standalone: true }"
+        />
+      </div>
+    </div>
+    <div>
+      <div>
+        <label for="description">Description</label>
+      </div>
+      <div>
+        <input
+          type="text"
+          [(ngModel)]="product.description"
+          [ngModelOptions]="{ standalone: true }"
+        />
+      </div>
+    </div>
+    <div>
+      <input type="submit" value="Save" />
+      <button (click)="toggleEdit()">Cancel</button>
+    </div>
+  </form>
+</div>
